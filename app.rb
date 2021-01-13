@@ -12,6 +12,9 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 before do
   @barbers = Barber.all
 end
@@ -43,6 +46,28 @@ post "/visit" do
     erb "Вы успешно зарегистрированы! Ждем Вас #{@datestamp}"
   else
     erb :visit
+  end
+end
+
+get "/contacts" do
+  erb :contacts
+end
+
+post "/contacts" do
+  @name = params[:name]
+  @email = params[:email]
+  @textarea = params[:textarea]
+
+  hh = { :name => "Введите имя",
+         :email => "Введите email",
+         :textarea => "Введите сообщение"
+  }
+
+  if is_validation_valid? hh
+    Contact.create(name: @name, email: @email, message: @textarea)
+    erb "Спасибо за оставленное сообщение"
+  else
+    erb :contacts
   end
 end
 
