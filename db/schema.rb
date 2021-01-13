@@ -12,10 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_01_11_193851) do
 
-  create_table "Test", primary_key: "Id", force: :cascade do |t|
-    t.string "field"
-  end
-
   create_table "barbers", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", precision: 6, null: false
