@@ -73,8 +73,12 @@ end
 
 get "/barber/:id" do
   @barber = @barbers.find(params[:id])
-
   erb :barber
+end
+
+get "/bookings" do
+  @clients = Client.all
+  erb :booking
 end
 
 def is_validation_valid? hh
