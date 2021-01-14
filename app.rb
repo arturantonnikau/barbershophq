@@ -71,6 +71,12 @@ post "/contacts" do
   end
 end
 
+get "/barber/:id" do
+  @barber = @barbers.find(params[:id])
+
+  erb :barber
+end
+
 def is_validation_valid? hh
   @error = hh.select { |key| params[key] == "" }.values.join(", ")
   @error.length > 0 ? false : true

@@ -1,7 +1,7 @@
-<h2> The Barbers list</h2>
+<h2>Список Парикмахеров</h2>
 
 <% @barbers.each do |barber| %>
-  <p>
-    <%= barber.name %>
-  </p>
+  <ul>
+    <a href="/barber/<%= barber.id%>"><%= barber.name %></a>
+  </ul>
 <% end %>
